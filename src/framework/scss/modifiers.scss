@@ -164,8 +164,11 @@
 
 //-font-weights
 
-.light {
+.thin {
   font-weight: 100;
+}
+.light {
+  font-weight: 300;
 }
 .regular {
   font-weight: 400;
@@ -309,6 +312,8 @@
 
 .w-fit-content {
 	width: fit-content;
+	width: -moz-fit-content;
+	width: -webkit-fit-content;
 }
 
 @for $i from 1 to 100 {
@@ -380,25 +385,25 @@
 }
 
 @for $i from 1 to 50 {
-	.bot-#{$i} {
+	.-bot-#{$i} {
 		bottom: calc(#{$i} * 1%);
 	}
 }
 
 @for $i from 1 to 50 {
-	.top-#{$i} {
+	.-top-#{$i} {
 		top: calc(#{$i} * 1%);
 	}
 }
 
 @for $i from 1 to 50 {
-	.left-#{$i} {
+	.-left-#{$i} {
 		left: calc(#{$i} * 1%);
 	}
 }
 
 @for $i from 1 to 50 {
-	.right-#{$i} {
+	.-right-#{$i} {
 		right: calc(#{$i} * 1%);
 	}
 }

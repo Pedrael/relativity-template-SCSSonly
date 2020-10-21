@@ -1,14 +1,21 @@
+$GLOBAL_SCALER: desktop-middle;
 
 //-adaptivity and relativity
 
+@mixin _desktop-middle {
+    @media (max-width: 1920px){
+        @content;
+    }
+}
+
 @mixin _desktop-small {
-    @media (max-width: 1700px){
+    @media (max-width: 1366px){
         @content;
     }
 }
 
 @mixin _tablet-big {
-    @media (max-width: 1170px){
+    @media (max-width: 1024px){
         @content;
     }
 }
@@ -39,7 +46,7 @@
 
 //-text
 
-@mixin FontLineSize($vmin-scaler, $vw-scaler, $rem-scaler, $font-size, $line-height, $letter-spacing: normal, $mode: desktop-middle) {
+@mixin FontLineSize($vmin-scaler, $vw-scaler, $rem-scaler, $font-size, $line-height, $letter-spacing: normal, $mode: $GLOBAL_SCALER) {
 
 	$rem-font: ($rem-scaler * $font-size)/$font_size-global;
 	$rem-line: ($rem-scaler * ($font-size + $line-height))/$font_size-global;
@@ -64,100 +71,100 @@
   background-size: $mode;
 }
 
-@mixin width($width, $scaler: 1, $mode: desktop-middle) {
+@mixin width($width, $scaler: 1, $mode: $GLOBAL_SCALER) {
 	width: RelativeUnits($width, $scaler, $mode, horizontal);
 }
 
-@mixin min-width($min-width, $scaler: 1, $mode: desktop-middle) {
+@mixin min-width($min-width, $scaler: 1, $mode: $GLOBAL_SCALER) {
   min-width: RelativeUnits($min-width, $scaler, $mode, horizontal);
 }
 
-@mixin max-width($max-width, $scaler: 1, $mode: desktop-middle) {
+@mixin max-width($max-width, $scaler: 1, $mode: $GLOBAL_SCALER) {
   max-width: RelativeUnits($max-width, $scaler, $mode, horizontal);
 }
 
-@mixin min-height($min-height, $scaler: 1, $mode: desktop-middle) {
+@mixin min-height($min-height, $scaler: 1, $mode: $GLOBAL_SCALER) {
   min-height: RelativeUnits($min-height, $scaler, $mode, horizontal);
 }
 
-@mixin max-height($max-height, $scaler: 1, $mode: desktop-middle) {
+@mixin max-height($max-height, $scaler: 1, $mode: $GLOBAL_SCALER) {
   max-height: RelativeUnits($max-height, $scaler, $mode, horizontal);
 }
 
-@mixin margin-padding($LIST-margin-padding) { //"m-r": (120, 0.5), "p-t": 320
+@mixin margin-padding($LIST-margin-padding, $mode: $GLOBAL_SCALER) { //"m-r": (120, 0.5), "p-t": 320
   @each $name-property, $value-property in $LIST-margin-padding {
 
   //margins
     @if $name-property == 'm-t' {
       @if length($value-property) > 1 {
-        margin-top: RelativeUnits(nth($value-property, 1), nth($value-property, 2));
+        margin-top: RelativeUnits(nth($value-property, 1), nth($value-property, 2), $mode);
       }
       @else {
-        margin-top: RelativeUnits(nth($value-property, 1));
+        margin-top: RelativeUnits(nth($value-property, 1), 1, $mode);
       }
     }
 
     @if $name-property == 'm-b' {
       @if length($value-property) > 1 {
-        margin-bottom: RelativeUnits(nth($value-property, 1), nth($value-property, 2));
+        margin-bottom: RelativeUnits(nth($value-property, 1), nth($value-property, 2), $mode);
       }
       @else {
-        margin-bottom: RelativeUnits(nth($value-property, 1));
+        margin-bottom: RelativeUnits(nth($value-property, 1), 1, $mode);
       }
     }
 
     @if $name-property == 'm-l' {
       @if length($value-property) > 1 {
-        margin-left: RelativeUnits(nth($value-property, 1), nth($value-property, 2));
+        margin-left: RelativeUnits(nth($value-property, 1), nth($value-property, 2), $mode);
       }
       @else {
-        margin-left: RelativeUnits(nth($value-property, 1));
+        margin-left: RelativeUnits(nth($value-property, 1), 1, $mode);
       }
     }
 
     @if $name-property == 'm-r' {
       @if length($value-property) > 1 {
-        margin-right: RelativeUnits(nth($value-property, 1), nth($value-property, 2));
+        margin-right: RelativeUnits(nth($value-property, 1), nth($value-property, 2), $mode);
       }
       @else {
-        margin-right: RelativeUnits(nth($value-property, 1));
+        margin-right: RelativeUnits(nth($value-property, 1), 1, $mode);
       }
     }
 
   //paddings
     @if $name-property == 'p-t' {
       @if length($value-property) > 1 {
-        padding-top: RelativeUnits(nth($value-property, 1), nth($value-property, 2));
+        padding-top: RelativeUnits(nth($value-property, 1), nth($value-property, 2), $mode);
       }
       @else {
-        padding-top: RelativeUnits(nth($value-property, 1));
+        padding-top: RelativeUnits(nth($value-property, 1), 1, $mode);
       }
     }
 
     @if $name-property == 'p-b' {
       @if length($value-property) > 1 {
-        padding-bottom: RelativeUnits(nth($value-property, 1), nth($value-property, 2));
+        padding-bottom: RelativeUnits(nth($value-property, 1), nth($value-property, 2), $mode);
       }
       @else {
-        padding-bottom: RelativeUnits(nth($value-property, 1));
+        padding-bottom: RelativeUnits(nth($value-property, 1), 1, $mode);
       }
     }
 
     @if $name-property == 'p-l' {
       @if length($value-property) > 1 {
-        padding-left: RelativeUnits(nth($value-property, 1), nth($value-property, 2));
+        padding-left: RelativeUnits(nth($value-property, 1), nth($value-property, 2), $mode);
       }
       @else {
-        padding-left: RelativeUnits(nth($value-property, 1));
+        padding-left: RelativeUnits(nth($value-property, 1), 1, $mode);
       }
     }
 
     @if $name-property == 'p-r' {
       @if length($value-property) > 1 {
-        padding-right: RelativeUnits(nth($value-property, 1), nth($value-property, 2));
+        padding-right: RelativeUnits(nth($value-property, 1), nth($value-property, 2), $mode);
       }
       @else {
-        padding-right: RelativeUnits(nth($value-property, 1));
+        padding-right: RelativeUnits(nth($value-property, 1), 1, $mode);
       }
     }
   }
@@ -404,13 +411,13 @@
 
 //-properties
 
-@mixin border-radius($radius) {
-  border-radius: RelativeUnitsComplex($radius, 0.2, 0.2);
+@mixin border-radius($radius, $h-scaler: 0.2, $v-scaler: 0.2, $mode: $GLOBAL_SCALER) {
+  border-radius: RelativeUnitsComplex($radius, $h-scaler, $v-scaler, $mode);
 }
 
 //-transforms
 
-@mixin TransformXY ($OffsetX, $OffsetY, $scaler: 1, $mode: desktop-middle) {
+@mixin TransformXY ($OffsetX, $OffsetY, $scaler: 1, $mode: $GLOBAL_SCALER) {
 
 	transform: translate(RelativeUnits($OffsetX, $scaler, $mode, horizontal), RelativeUnits($OffsetY, $scaler, $mode, vertical));
 	-moz-transform: translate(RelativeUnits($OffsetX, $scaler, $mode, horizontal), RelativeUnits($OffsetY, $scaler, $mode, vertical)); /* Firefox 3.5+ */
