@@ -4,6 +4,7 @@ html, body {
 			overflow-x: hidden;
 			width: 100vw;
       background: $black;
+			//background: #d0d0d0;
 
 			a {
 				text-decoration: none;
@@ -120,6 +121,10 @@ html, body {
 		@include width(200, 0.5);
 		padding-bottom: RelativeUnits(50, 0.5);
 		padding-top: RelativeUnits(50, 0.5);
+	}
+
+	@include CONFIGURE-e-button-bordered(black, red) {
+
 	}
 }
 

@@ -44,7 +44,7 @@ module.exports = {
       {
         test: /\.(sass|scss)$/,
         include: path.resolve(__dirname, 'src/scss'),
-        use: ExtractTextPlugin.extract({
+        use: ['css-hot-loader'].concat(ExtractTextPlugin.extract({
           use: [{
               loader: "css-loader",
               options: {
@@ -59,7 +59,7 @@ module.exports = {
               }
             }
           ]
-        })
+        }))
       },
       {
         test: /\.html$/,

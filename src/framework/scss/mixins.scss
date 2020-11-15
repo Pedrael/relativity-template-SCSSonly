@@ -1,4 +1,4 @@
-$GLOBAL_SCALER: desktop-middle;
+@import "global-scaler.scss";
 
 //-adaptivity and relativity
 
@@ -81,6 +81,10 @@ $GLOBAL_SCALER: desktop-middle;
 
 @mixin max-width($max-width, $scaler: 1, $mode: $GLOBAL_SCALER) {
   max-width: RelativeUnits($max-width, $scaler, $mode, horizontal);
+}
+
+@mixin height($min-height, $scaler: 1, $mode: $GLOBAL_SCALER) {
+  height: RelativeUnits($min-height, $scaler, $mode, horizontal);
 }
 
 @mixin min-height($min-height, $scaler: 1, $mode: $GLOBAL_SCALER) {

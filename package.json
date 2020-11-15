@@ -14,13 +14,14 @@
   "license": "ISC",
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.12.1",
-    "lodash": "^4.17.15"
+    "lodash": "^4.17.20"
   },
   "devDependencies": {
     "babel-core": "^6.26.3",
     "babel-loader": "^7.1.5",
     "babel-preset-env": "^1.7.0",
     "copy-webpack-plugin": "^5.1.1",
+    "css-hot-loader": "^1.4.4",
     "css-loader": "^3.4.2",
     "extract-text-webpack-plugin": "^4.0.0-beta.0",
     "html-cli": "^1.0.0",
